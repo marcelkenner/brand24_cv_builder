@@ -20,12 +20,13 @@ Prefer this separation:
 
 - a showcase route for the browser preview
 - a print-target route that renders only the CV document for a selected paper size
-- an API route or server helper that opens the print-target route in headless Chromium and calls Playwright PDF generation
+- a Playwright helper and maintenance script that open the print-target route in headless Chromium and write stable static PDF assets for deployment
 
-Current implementation status on 2026-03-13:
+Current implementation status on 2026-03-15:
 
 - `src/features/cv/server/renderCvPdf.ts` owns Chromium launch and PDF generation
-- `src/app/api/cv-pdf/route.ts` validates `paper` and exposes the stable HTTP download interface
+- `scripts/generate-static-cv-pdfs.ts` serves `out/` locally and writes the generated PDFs into `public/generated/cv-pdf/`
+- `next.config.ts` uses `output: "export"` so the production deployment stays compatible with Cloudflare Pages static hosting
 
 The shared CV document component should be used by both preview and print routes. Do not maintain separate markup trees for preview and PDF unless a proven browser limitation forces it.
 
@@ -137,8 +138,8 @@ Use screenshots and actual downloaded PDFs during review. Compilation alone is n
 
 Phase 10 verification on 2026-03-13 confirmed:
 
-- `/cv/a4` and `/api/cv-pdf?paper=a4` stay visually aligned on page 1, and the export continues cleanly onto page 2 without forcing the whole `Education` section to move as one block
-- `/cv/letter` and `/api/cv-pdf?paper=letter` keep the same stable first-page structure, but the shorter paper height still causes page 2 to begin at `Education`
+- `/cv/a4` and the generated `cv-a4-*.pdf` exports stay visually aligned on page 1, and the export continues cleanly onto page 2 without forcing the whole `Education` section to move as one block
+- `/cv/letter` and the generated `cv-letter-*.pdf` exports keep the same stable first-page structure, but the shorter paper height still causes page 2 to begin at `Education`
 - accent color, divider lines, contact row wrapping, and the no-photo header collapse survive export without obvious drift
 
 Pagination refinement on 2026-03-14 changed two implementation guardrails:

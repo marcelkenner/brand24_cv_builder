@@ -1,0 +1,43 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+  role="img"
+  aria-labelledby="title"
+>
+  <title>Resume approval icon</title>
+  <defs>
+    <linearGradient id="badge" x1="300" y1="290" x2="455" y2="455" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c10045" />
+      <stop offset="1" stop-color="#8f123b" />
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="#4a4d53" stroke-linecap="round" stroke-linejoin="round">
+    <path
+      d="M48 28h309l111 111v299H48z"
+      stroke-width="16"
+    />
+    <path
+      d="M357 28v84c0 15 12 27 27 27h84"
+      stroke-width="16"
+    />
+    <circle cx="186" cy="133" r="72" stroke-width="16" />
+    <circle cx="186" cy="113" r="28" fill="#4a4d53" stroke-width="0" />
+    <path
+      d="M131 181c9-26 34-39 55-39s46 13 55 39"
+      fill="#4a4d53"
+      stroke-width="0"
+    />
+    <path d="M108 258h163" stroke-width="16" />
+    <path d="M108 309h147" stroke-width="16" />
+    <path d="M108 358h109" stroke-width="16" />
+  </g>
+  <circle cx="389" cy="388" r="94" fill="url(#badge)" />
+  <path
+    d="M340 387l34 34 72-74"
+    fill="none"
+    stroke="#1f1216"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="24"
+  />
+</svg>

@@ -1,4 +1,5 @@
 import { cvPaperMetadata, type CvPaperVariant } from "@/features/cv/domain/paperVariant";
+import { getCvPdfAssetPath } from "@/features/cv/domain/cvPdfAsset";
 import type { CvTemplateVariant } from "@/features/cv/domain/cvTemplateVariant";
 import {
   cvVersionMetadata,
@@ -62,17 +63,9 @@ export function getDownloadHref(
   version: CvVersion,
   template: CvTemplateVariant,
 ) {
-  const params = new URLSearchParams({
+  return getCvPdfAssetPath({
     paper,
+    template,
+    version,
   });
-
-  if (version !== defaultCvVersion) {
-    params.set("version", version);
-  }
-
-  if (template !== cvVersionMetadata[version].defaultTemplate) {
-    params.set("template", template);
-  }
-
-  return `/api/cv-pdf?${params.toString()}`;
 }

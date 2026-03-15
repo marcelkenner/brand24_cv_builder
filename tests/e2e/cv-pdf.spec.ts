@@ -2,60 +2,31 @@ import { expect, test } from "@playwright/test";
 
 const pdfVariants = [
   {
-    expectedFilename:
-      'attachment; filename="cv-a4-ai-adoption-manager-single-column-with-photo.pdf"',
-    paper: "a4",
-    template: null,
-    version: null,
+    path: "/generated/cv-pdf/cv-a4-ai-adoption-manager-single-column-with-photo.pdf",
   },
   {
-    expectedFilename:
-      'attachment; filename="cv-a4-ats-friendly-general-single-column-with-photo.pdf"',
-    paper: "a4",
-    template: null,
-    version: "ats-friendly-general",
+    path: "/generated/cv-pdf/cv-a4-ats-friendly-general-single-column-with-photo.pdf",
   },
   {
-    expectedFilename:
-      'attachment; filename="cv-a4-leadership-stakeholder-two-column-with-photo.pdf"',
-    paper: "a4",
-    template: null,
-    version: "leadership-stakeholder",
+    path: "/generated/cv-pdf/cv-a4-leadership-stakeholder-two-column-with-photo.pdf",
   },
   {
-    expectedFilename:
-      'attachment; filename="cv-letter-operations-transformation-two-column-with-photo.pdf"',
-    paper: "letter",
-    template: null,
-    version: "operations-transformation",
+    path: "/generated/cv-pdf/cv-letter-operations-transformation-two-column-with-photo.pdf",
   },
 ] as const;
 
-test.describe("cv pdf route", () => {
+test.describe("static cv pdf assets", () => {
   for (const variant of pdfVariants) {
     test(
-      `downloads a real PDF for ${variant.paper} ${variant.version ?? "default"} ${variant.template ?? "default-template"}`,
+      `serves a real PDF for ${variant.path}`,
       async ({
         request,
       }) => {
-      const params = new URLSearchParams({ paper: variant.paper });
-
-      if (variant.version) {
-        params.set("version", variant.version);
-      }
-
-      if (variant.template) {
-        params.set("template", variant.template);
-      }
-
-      const response = await request.get(`/api/cv-pdf?${params.toString()}`);
+      const response = await request.get(variant.path);
 
       expect(response.ok()).toBeTruthy();
       expect(response.status()).toBe(200);
       expect(response.headers()["content-type"]).toContain("application/pdf");
-      expect(response.headers()["content-disposition"]).toBe(
-        variant.expectedFilename,
-      );
 
       const body = await response.body();
 

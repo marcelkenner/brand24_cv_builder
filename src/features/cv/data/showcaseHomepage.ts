@@ -159,11 +159,11 @@ export const homepageFlowSteps: readonly FlowStep[] = [
   },
   {
     step: "Phase 7-8",
-    title: "Playwright export and download API",
+    title: "Playwright export and static PDF delivery",
     what:
-      "Added the Node-side PDF renderer and exposed it through a stable HTTP download route with explicit paper validation and deterministic filenames.",
+      "Added the Playwright PDF renderer, then switched delivery to pre-generated static PDF assets so the site can deploy on Cloudflare Pages without a Node runtime.",
     how:
-      "Opened the internal print route in headless Chromium, waited for print readiness and loaded fonts, then called `page.pdf()` with explicit A4 or Letter settings.",
+      "Opened the internal print route in headless Chromium, waited for print readiness and loaded fonts, called `page.pdf()` with explicit A4 or Letter settings, and wrote the finished files into the static asset tree.",
     when: "Completed on 2026-03-13 at 23:05Z and 23:24Z.",
   },
   {

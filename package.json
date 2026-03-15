@@ -5,7 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node scripts/serve-static-out.mjs out",
+    "preview:static": "node scripts/serve-static-out.mjs out",
+    "generate:static-pdfs": "tsx scripts/generate-static-cv-pdfs.ts",
+    "refresh:static-pdfs": "npm run build && npm run generate:static-pdfs",
+    "cf:deploy": "wrangler pages deploy out",
+    "cf:dev": "wrangler pages dev out",
     "lint": "eslint",
     "test:unit": "vitest run",
     "test:e2e": "playwright test"
@@ -33,7 +38,9 @@
     "jsdom": "^27.0.1",
     "playwright": "^1.58.2",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5",
-    "vitest": "^4.0.7"
+    "vitest": "^4.0.7",
+    "wrangler": "^4.73.0"
   }
 }

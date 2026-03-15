@@ -1,35 +1,18 @@
-import { CvShowcasePage } from "@/features/cv/components/CvShowcasePage";
-import { getCvDocument } from "@/features/cv/data/cvVersions";
-import { resolveCvPaperVariant } from "@/features/cv/domain/paperVariant";
-import { resolveCvTemplateVariant } from "@/features/cv/domain/cvTemplateVariant";
+import { Suspense } from "react";
+
 import {
-  cvVersionMetadata,
-  resolveCvVersion,
-} from "@/features/cv/domain/cvVersion";
+  CvShowcaseRouteClient,
+} from "@/features/cv/components/routes/CvShowcaseRouteClient";
+import {
+  DefaultCvShowcaseRoute,
+} from "@/features/cv/components/routes/CvShowcaseRouteContent";
 
-type HomePageProps = {
-  readonly searchParams: Promise<{
-    readonly paper?: string | readonly string[];
-    readonly template?: string | readonly string[];
-    readonly version?: string | readonly string[];
-  }>;
-};
+export const dynamic = "force-static";
 
-export default async function Home({ searchParams }: HomePageProps) {
-  const resolvedSearchParams = await searchParams;
-  const paper = resolveCvPaperVariant(resolvedSearchParams.paper);
-  const version = resolveCvVersion(resolvedSearchParams.version);
-  const template = resolveCvTemplateVariant(
-    resolvedSearchParams.template,
-    cvVersionMetadata[version].defaultTemplate,
-  );
-
+export default function Home() {
   return (
-    <CvShowcasePage
-      document={getCvDocument(version)}
-      paper={paper}
-      template={template}
-      version={version}
-    />
+    <Suspense fallback={<DefaultCvShowcaseRoute />}>
+      <CvShowcaseRouteClient />
+    </Suspense>
   );
 }

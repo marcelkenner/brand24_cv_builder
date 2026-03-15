@@ -1,4 +1,16 @@
+import { vi } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
+
+vi.mock("next/navigation", async () => {
+  const actual = await vi.importActual<typeof import("next/navigation")>(
+    "next/navigation",
+  );
+
+  return {
+    ...actual,
+    useSearchParams: () => new URLSearchParams("version=operations-transformation"),
+  };
+});
 
 import CvPrintPage, { generateStaticParams } from "@/app/cv/[paper]/page";
 import { getCvDocument } from "@/features/cv/data/cvVersions";
@@ -17,9 +29,6 @@ describe("CvPrintPage", () => {
     render(
       await CvPrintPage({
         params: Promise.resolve({ paper: "letter" }),
-        searchParams: Promise.resolve({
-          version: "operations-transformation",
-        }),
       }),
     );
 

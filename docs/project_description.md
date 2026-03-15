@@ -1138,7 +1138,7 @@ Must include:
 * visible list of available CV variants as cards
 * per-card metadata: target role, language, short summary
 * per-card actions: `Download PDF`
-* optional per-card action: `View online`
+* optional per-card actions: `View online`, `Listen`
 
 #### Mode B: Project Case Study
 
@@ -1183,7 +1183,7 @@ The homepage should follow this structure:
 | CV workspace                                                                                     |
 | +---------------------------+  +--------------------------------------------------------------+ |
 | | Variant selector          |  | Sticky preview actions                                       | |
-| | AI Adoption Manager       |  | [ View online ] [ Download PDF ]                           | |
+| | AI Adoption Manager       |  | [ View online ] [ Listen ] [ Download PDF ]                | |
 | | ATS-Friendly General      |  | Selected variant summary                                    | |
 | | Leadership / Stakeholder  |  | Large live preview                                          | |
 | | Operations / Transform.   |  | Side-by-side variant difference note                        | |
@@ -1227,7 +1227,7 @@ Required behavior:
 
 * left-side variant selector
 * large live preview on the right
-* sticky actions for `View online` and `Download PDF`
+* sticky actions for `View online`, `Listen`, and `Download PDF`
 * quick summary of how the selected variant differs from the others
 
 #### Why I built this

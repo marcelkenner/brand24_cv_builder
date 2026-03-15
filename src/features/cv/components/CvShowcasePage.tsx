@@ -32,6 +32,7 @@ import {
   HeroSection,
   Metric,
   SectionBand,
+  WorkspaceAudioPlayer,
   WorkspaceSelectorButton,
 } from "./showcase/CvShowcaseSections";
 import {
@@ -44,6 +45,8 @@ import {
   getPrintHref,
   getShowcaseHref,
 } from "./showcase/showcaseLinks";
+
+const CV_NARRATION_AUDIO_SRC = "/Marcel_CV_audio-enhanced-v2.mp3" as const;
 
 type CvShowcasePageProps = {
   readonly document: CvDocumentModel;
@@ -170,6 +173,10 @@ function WorkspaceSection({
                     Live
                   </span>
                 </a>
+                <WorkspaceAudioPlayer
+                  audioLabel="Listen to narrator read the CV"
+                  audioSrc={CV_NARRATION_AUDIO_SRC}
+                />
                 <a
                   className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,#8a1538_0%,#b11f4a_100%)] px-4 py-2.5 text-sm font-semibold !text-white visited:!text-white hover:-translate-y-px hover:!text-white focus-visible:!text-white shadow-[0_10px_22px_rgba(138,21,56,0.22)] ring-1 ring-black/5 transition-all hover:shadow-[0_14px_28px_rgba(138,21,56,0.28)]"
                   href={getDownloadHref(paper, version, template)}

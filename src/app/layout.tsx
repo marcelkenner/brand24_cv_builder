@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   title: "CV Builder | AI-Assisted Resume Tailoring System",
   description:
     "Recruiter-ready CV variants, live PDF downloads, and a transparent AI workflow case study.",
+  icons: {
+    icon: "/favicon-resume-check.svg",
+    shortcut: "/favicon-resume-check.svg",
+  },
 };
 
 export default function RootLayout({

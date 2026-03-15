@@ -26,7 +26,7 @@ describe("CvShowcasePage", () => {
       screen.getByRole("link", { name: "Download Leadership / Stakeholder Version CV" }),
     ).toHaveAttribute(
       "href",
-      "/api/cv-pdf?paper=letter&version=leadership-stakeholder",
+      "/generated/cv-pdf/cv-letter-leadership-stakeholder-two-column-with-photo.pdf",
     );
     expect(
       screen.getByRole("link", { name: "Download Leadership / Stakeholder Version CV" }),
@@ -118,8 +118,17 @@ describe("CvShowcasePage", () => {
       screen.getByRole("link", { name: "Download PDF" }),
     ).toHaveAttribute(
       "href",
-      "/api/cv-pdf?paper=a4&version=operations-transformation",
+      "/generated/cv-pdf/cv-a4-operations-transformation-two-column-with-photo.pdf",
     );
+    expect(
+      screen.getByLabelText("Listen to narrator read the CV"),
+    ).toHaveAttribute("src", "/Marcel_CV_audio-enhanced-v2.mp3");
+    expect(
+      screen.getByLabelText("Listen to narrator read the CV"),
+    ).toHaveAttribute("controls");
+    expect(
+      screen.getByText("No time to read? Listen to the CV instead."),
+    ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Download PDF" })).toHaveClass(
       "!text-white",
     );

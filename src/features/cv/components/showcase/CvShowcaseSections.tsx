@@ -1,6 +1,7 @@
 import {
   ArrowDownTrayIcon,
   ArrowRightIcon,
+  SpeakerWaveIcon,
   Squares2X2Icon,
 } from "@heroicons/react/24/outline";
 import type { ReactNode } from "react";
@@ -175,6 +176,33 @@ export function Metric({
         <span>{label}</span>
       </dt>
       <dd className="mt-2 text-sm leading-6 text-text">{value}</dd>
+    </div>
+  );
+}
+
+export function WorkspaceAudioPlayer({
+  audioLabel,
+  audioSrc,
+}: {
+  readonly audioLabel: string;
+  readonly audioSrc: string;
+}) {
+  return (
+    <div className="w-full rounded-[24px] border border-black/8 bg-white px-4 py-3 shadow-[0_8px_18px_rgba(34,34,34,0.05)] sm:w-[21rem]">
+      <div className="flex items-center gap-2 text-sm font-semibold text-text">
+        <SpeakerWaveIcon aria-hidden="true" className="size-4 shrink-0 text-text/72" />
+        <span>Listen to narration</span>
+      </div>
+      <p className="mt-1 text-xs leading-5 text-text/68">
+        No time to read? Listen to the CV instead.
+      </p>
+      <audio
+        aria-label={audioLabel}
+        className="mt-2 block h-10 w-full"
+        controls
+        preload="none"
+        src={audioSrc}
+      />
     </div>
   );
 }

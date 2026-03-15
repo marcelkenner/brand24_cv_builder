@@ -9,7 +9,7 @@ export default defineConfig({
     baseURL: `http://127.0.0.1:${port}`,
   },
   webServer: {
-    command: `bash -lc 'source ~/.nvm/nvm.sh && npm run build && PORT=${port} npm run start'`,
+    command: `bash -lc 'source ~/.nvm/nvm.sh && npm run build && npm run preview:static -- --port ${port}'`,
     port,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
