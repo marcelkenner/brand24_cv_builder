@@ -1,23 +1,44 @@
-import { CvShowcasePage } from "@/features/cv/components/CvShowcasePage";
+import { notFound } from "next/navigation";
+
+import { CvPrintDocument } from "@/features/cv/components/CvPrintDocument";
 import { getCvDocument } from "@/features/cv/data/cvVersions";
-import { resolveCvPaperVariant } from "@/features/cv/domain/paperVariant";
+import {
+  cvPaperVariants,
+  parseCvPaperVariant,
+} from "@/features/cv/domain/paperVariant";
 import { resolveCvTemplateVariant } from "@/features/cv/domain/cvTemplateVariant";
 import {
   cvVersionMetadata,
   resolveCvVersion,
 } from "@/features/cv/domain/cvVersion";
 
-type HomePageProps = {
+type CvPrintPageProps = {
+  readonly params: Promise<{
+    readonly paper: string;
+  }>;
   readonly searchParams: Promise<{
-    readonly paper?: string | readonly string[];
     readonly template?: string | readonly string[];
     readonly version?: string | readonly string[];
   }>;
 };
 
-export default async function Home({ searchParams }: HomePageProps) {
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return cvPaperVariants.map((paper) => ({ paper }));
+}
+
+export default async function CvPrintPage({
+  params,
+  searchParams,
+}: CvPrintPageProps) {
+  const paper = parseCvPaperVariant((await params).paper);
+
+  if (!paper) {
+    notFound();
+  }
+
   const resolvedSearchParams = await searchParams;
-  const paper = resolveCvPaperVariant(resolvedSearchParams.paper);
   const version = resolveCvVersion(resolvedSearchParams.version);
   const template = resolveCvTemplateVariant(
     resolvedSearchParams.template,
@@ -25,11 +46,10 @@ export default async function Home({ searchParams }: HomePageProps) {
   );
 
   return (
-    <CvShowcasePage
+    <CvPrintDocument
       document={getCvDocument(version)}
       paper={paper}
       template={template}
-      version={version}
     />
   );
 }

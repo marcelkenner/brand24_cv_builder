@@ -1,0 +1,364 @@
+Detailed ASCII Layout Mockup - Single-Column Primary Reading Flow without Photo
+
+Use this wireframe as the structural blueprint for a no-photo variant of the single-column CV. It mirrors the existing single-column template, but the header is reduced to a disciplined left-aligned text stack with no image or substitute decoration.
+
+## Page Format
+
+```text
+┌──────────────────────────────────────────────────────────────────────────────────────────────┐
+│ PAGE FORMAT                                                                                  │
+│ A4 PORTRAIT                                                                                  │
+│ Top margin: 16 mm   Bottom margin: 16 mm   Left margin: 18 mm   Right margin: 18 mm        │
+│ Layout: SINGLE COLUMN PRIMARY READING FLOW                                                   │
+│ Grid behavior: left-aligned text system with disciplined spacing rhythm                      │
+└──────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+## Header Band
+
+```text
+┌──────────────────────────────────────────────────────────────────────────────────────────────┐
+│ HEADER BAND                                                                                  │
+│                                                                                              │
+│  FULL NAME                                                                                   │
+│  Professional Title / Positioning Line                                                       │
+│  City, Country · Phone · Email · LinkedIn · Website                                          │
+│                                                                                              │
+│  Optional thin accent rule spanning full usable width below header                           │
+└──────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+Header rules:
+
+* Use the full content width for text.
+* Keep all header lines aligned to the same left edge.
+* Do not center the header just because the photo is absent.
+* Do not replace the photo with an icon, badge, quote, color block, or decorative shape.
+* Preserve clean whitespace to the right as part of the normal page field.
+
+Contact line variants:
+
+```text
+City, Country  ·  +00 000 000 000  ·  name@email.com  ·  linkedin.com/in/name  ·  website.com
+```
+
+```text
+City, Country  ·  +00 000 000 000  ·  name@email.com
+linkedin.com/in/name  ·  website.com
+```
+
+Suggested header rhythm:
+
+* 8-12 pt from top margin to name
+* 4-6 pt from name to title
+* 4-6 pt from title to contact line
+* 10-14 pt from contact line to divider rule
+* 14-18 pt from divider rule to the first section
+
+## Full Layout Wireframe
+
+```text
+┌──────────────────────────────────────────────────────────────────────────────────────────────┐
+│ FULL NAME                                                                                    │
+│ Professional Title / Positioning Line                                                        │
+│ City, Country · Phone · Email · LinkedIn · Website                                           │
+│ ──────────────────────────────────────────────────────────────────────────────────────────── │
+│                                                                                              │
+│ PROFESSIONAL SUMMARY                                                                         │
+│ Short paragraph of 45-80 words.                                                              │
+│ States professional identity, level, sector/function, strongest strengths, and value.       │
+│ No first person. No fluff. No cliche adjectives.                                            │
+│                                                                                              │
+│ CORE COMPETENCIES                                                                            │
+│ Business Development · Commercial Strategy · Stakeholder Management · Negotiation            │
+│ Client Relationship Management · Pipeline Management · Market Analysis · Forecasting         │
+│ Cross-functional Collaboration · Process Improvement                                         │
+│                                                                                              │
+│ PROFESSIONAL EXPERIENCE                                                                      │
+│ ROLE TITLE                                                            MMM YYYY - Present     │
+│ Company Name, Location                                                                        │
+│ Optional one-line company descriptor if needed                                               │
+│ • Achievement / responsibility / outcome bullet 1                                            │
+│ • Achievement / responsibility / outcome bullet 2                                            │
+│ • Achievement / responsibility / outcome bullet 3                                            │
+│ • Achievement / responsibility / outcome bullet 4                                            │
+│ • Achievement / responsibility / outcome bullet 5                                            │
+│                                                                                              │
+│ ROLE TITLE                                                            MMM YYYY - MMM YYYY    │
+│ Company Name, Location                                                                        │
+│ • Achievement / responsibility / outcome bullet 1                                            │
+│ • Achievement / responsibility / outcome bullet 2                                            │
+│ • Achievement / responsibility / outcome bullet 3                                            │
+│ • Achievement / responsibility / outcome bullet 4                                            │
+│                                                                                              │
+│ EDUCATION                                                                                    │
+│ Degree / Qualification                                                 YYYY - YYYY          │
+│ Institution, Location                                                                         │
+│                                                                                              │
+│ CERTIFICATIONS                                                                               │
+│ Certification Name - Issuer - Year                                                           │
+│                                                                                              │
+│ LANGUAGES                                                                                    │
+│ English - Native | German - Professional | Swedish - Conversational                         │
+│                                                                                              │
+│ TECHNICAL SKILLS                                                                             │
+│ Salesforce · HubSpot · Excel · Power BI · Microsoft 365 · Google Workspace                  │
+│                                                                                              │
+│ ADDITIONAL INFORMATION                                                                       │
+│ Awards / Memberships / Volunteer Leadership / Selected Projects                              │
+└──────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+## Section Construction Spec
+
+### 1. Name Block
+
+```text
+FULL NAME
+Professional Title / Positioning Line
+City, Country · Phone · Email · LinkedIn · Website
+```
+
+Rules:
+
+* Name is the largest element on the page.
+* Title sits directly below the name.
+* Contact line reads as compact metadata, not body copy.
+* All three lines align to the same left edge.
+
+### 2. Divider Rule
+
+```text
+──────────────────────────────────────────────────────────────────────────────────────────────
+```
+
+Rules:
+
+* Use a single thin line only.
+* Place it below the header, not above it.
+* Keep spacing above and below consistent.
+
+### 3. Professional Summary
+
+```text
+PROFESSIONAL SUMMARY
+Short paragraph of 3-5 lines with concise executive positioning.
+```
+
+Rules:
+
+* Keep it one compact paragraph.
+* Do not narrow the paragraph unnecessarily.
+* Avoid first-person language and empty claims.
+
+### 4. Core Competencies
+
+Preferred option:
+
+```text
+CORE COMPETENCIES
+Business Development · Commercial Strategy · Stakeholder Management · Negotiation
+Client Relationship Management · Process Improvement · Forecasting · CRM Management
+Cross-functional Leadership · Market Analysis
+```
+
+Alternate option:
+
+```text
+CORE COMPETENCIES
+Business Development                  Stakeholder Management
+Commercial Strategy                  Contract Negotiation
+Pipeline Management                  Market Analysis
+Process Improvement                  Client Relationship Management
+```
+
+Rules:
+
+* Keep it airy and compact.
+* No icons, bullets, progress bars, or ratings.
+* Keep all items role-relevant.
+
+### 5. Professional Experience
+
+```text
+ROLE TITLE                                                            MMM YYYY - MMM YYYY
+Company Name, Location
+Optional company descriptor if context is needed
+• Action + scope/context + measurable result
+• Action + scope/context + measurable result
+• Action + scope/context + measurable result
+• Action + scope/context + measurable result
+```
+
+Rules:
+
+* Role title and date share the same line.
+* Date stays flush right across every role.
+* Company line sits below the role title.
+* Bullets use a consistent hanging indent.
+* Space between roles is larger than space between bullets.
+
+### 6. Education
+
+```text
+EDUCATION
+Degree / Qualification                                                 YYYY - YYYY
+Institution, Location
+Optional honors / GPA / notable module if relevant
+```
+
+Rules:
+
+* Keep entries concise.
+* Use the same date alignment logic as experience.
+* Sort newest first.
+
+### 7. Certifications
+
+```text
+CERTIFICATIONS
+Certification Name - Issuer - Year
+Certification Name - Issuer - Year
+```
+
+Rules:
+
+* Use plain text lines.
+* Do not over-design this section.
+
+### 8. Languages
+
+```text
+LANGUAGES
+English - Native | German - Professional Working Proficiency | Swedish - Conversational
+```
+
+Rules:
+
+* Keep it on one line if possible, otherwise wrap cleanly.
+* No flags, dots, stars, or icons.
+
+### 9. Technical Skills
+
+```text
+TECHNICAL SKILLS
+Salesforce · HubSpot · Excel · Power BI · Microsoft 365 · Google Workspace
+```
+
+Rules:
+
+* Prefer grouped keywords.
+* Avoid dense comma-only lists if readability suffers.
+
+### 10. Additional Information
+
+```text
+ADDITIONAL INFORMATION
+Award Name - Year
+Professional Membership - Status
+Volunteer Position - Organization
+```
+
+Rules:
+
+* Include only if the content adds clear value.
+* This section should not visually dominate the page.
+
+## Spacing And Alignment
+
+Vertical rhythm:
+
+```text
+[Top margin]
+Header content
+small gap
+Header divider rule
+medium gap
+Section heading
+small gap
+Section content
+medium gap
+...
+[Bottom margin]
+```
+
+Suggested spacing:
+
+* 4-8 pt between section heading and section content
+* 12-16 pt between summary and competencies
+* 12-16 pt between competencies and experience
+* 10-14 pt between experience entries
+* 2-4 pt between bullets inside a role
+
+Alignment system:
+
+```text
+LEFT EDGE OF NAME
+LEFT EDGE OF TITLE
+LEFT EDGE OF CONTACT LINE
+LEFT EDGE OF ALL SECTION HEADINGS
+LEFT EDGE OF BODY CONTENT
+RIGHT EDGE OF DATE COLUMN
+RIGHT EDGE OF PAGE CONTENT FIELD
+```
+
+Rules:
+
+* Dates must align consistently.
+* Do not center body content.
+* Do not introduce arbitrary indentation shifts between sections.
+
+## Two-Page Extension Logic
+
+If the CV flows to page 2, keep this structure:
+
+* Page 1: header, summary, competencies, most recent and most important experience entries
+* Page 2: remaining experience, education, certifications, languages, technical skills, additional information
+
+Continuation concept:
+
+```text
+PAGE 1 ENDS AFTER A COMPLETE ROLE BLOCK IF POSSIBLE
+
+PAGE 2 START
+┌──────────────────────────────────────────────────────────────────────────────────────────────┐
+│ PROFESSIONAL EXPERIENCE (continued only if necessary)                                        │
+│ ROLE TITLE                                                            MMM YYYY - MMM YYYY    │
+│ Company Name, Location                                                                        │
+│ • Bullet                                                                                     │
+│ • Bullet                                                                                     │
+│                                                                                              │
+│ EDUCATION                                                                                    │
+│ ...                                                                                          │
+│                                                                                              │
+│ CERTIFICATIONS                                                                               │
+│ ...                                                                                          │
+│                                                                                              │
+│ LANGUAGES                                                                                    │
+│ ...                                                                                          │
+│                                                                                              │
+│ TECHNICAL SKILLS                                                                             │
+│ ...                                                                                          │
+└──────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+Rules:
+
+* Do not split a heading from its content at a page break.
+* Do not leave a single orphan bullet on page 2 if it can be avoided.
+* An optional small repeated name + contact header on page 2 is acceptable only if needed.
+
+## Micro-Detail Checklist
+
+* No photo appears anywhere in the template.
+* Name remains the most visually dominant element.
+* Title remains secondary to name.
+* Contact line is compact and readable.
+* Header remains left aligned rather than centered.
+* Section headings stay consistent in size, weight, case, and color.
+* Summary reads as one compact paragraph.
+* Competencies are concise and easy to scan.
+* Date column is visually consistent.
+* Company/location lines are secondary to role titles.
+* Older roles contain fewer bullets than the current role.
+* No sidebars, rating bars, colored boxes, decorative shapes, or centered body text.

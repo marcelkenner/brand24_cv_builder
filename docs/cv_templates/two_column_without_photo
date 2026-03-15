@@ -1,0 +1,359 @@
+Detailed ASCII Layout Mockup - Restrained Two-Column CV without Photo
+
+Use this wireframe as the structural blueprint for a restrained two-column CV. This layout is an allowed exception to the single-column default and must remain disciplined, light, and formal rather than looking like a dark-sidebar resume template.
+
+## Page Format
+
+```text
+┌──────────────────────────────────────────────────────────────────────────────────────────────┐
+│ PAGE FORMAT                                                                                  │
+│ A4 PORTRAIT                                                                                  │
+│ Top margin: 16 mm   Bottom margin: 16 mm   Left margin: 18 mm   Right margin: 18 mm        │
+│ Layout: RESTRAINED TWO-COLUMN                                                                │
+│ Left column width: 28% to 32%                                                                │
+│ Right column width: 68% to 72%                                                               │
+│ Gutter: 6 mm to 8 mm                                                                         │
+│ Sidebar treatment: white or barely tinted neutral only if necessary                          │
+└──────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+Core layout rules:
+
+* Left column stays narrow and utility-focused.
+* Right column remains visually dominant.
+* Do not use a dark sidebar block.
+* Sidebar background must remain white or a barely tinted neutral only if necessary.
+* Do not add cards, boxed widgets, rating bars, or decorative fills just because a second column exists.
+
+## Column Roles
+
+Use this allocation by default:
+
+* Left column: contact, key skills, languages, certifications, tools
+* Right column: name, title, summary, experience, education, achievements
+
+The left column is support material. The right column carries the main reading flow and should clearly dominate the page.
+
+## Top Structure
+
+```text
+┌──────────────────────────────────────────────────────────────────────────────────────────────┐
+│ FULL NAME                                                                                    │
+│ Professional Title / Positioning Line                                                        │
+│ City, Country · Phone · Email · LinkedIn · Website                                           │
+│ ──────────────────────────────────────────────────────────────────────────────────────────── │
+│                                                                                              │
+│ LEFT COLUMN                          │ RIGHT COLUMN                                           │
+│ Contact                              │ Professional Summary                                   │
+│ Core Skills                          │ Professional Experience                                │
+│ Languages                            │ Education                                              │
+│ Certifications                       │ Selected Achievements / Additional Information          │
+│ Tools                                │                                                        │
+└──────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+Header rules:
+
+* Keep the name block full-width above both columns.
+* Keep all three header lines aligned to the same left edge.
+* Do not place a photo, icon block, monogram, or accent panel in the top-right area.
+* Use an optional thin divider rule below the header only if it improves separation.
+
+Suggested header rhythm:
+
+* 8-12 pt from top margin to name
+* 4-6 pt from name to title
+* 4-6 pt from title to contact line
+* 10-14 pt from contact line to divider rule
+* 14-18 pt from divider rule to the start of the two-column body
+
+## Master Two-Column Wireframe
+
+```text
+┌──────────────────────────────────────────────────────────────────────────────────────────────┐
+│ FULL NAME                                                                                    │
+│ Professional Title / Positioning Line                                                        │
+│ City, Country · Phone · Email · LinkedIn · Website                                           │
+│ ──────────────────────────────────────────────────────────────────────────────────────────── │
+│                                                                                              │
+│ CONTACT                                │ PROFESSIONAL SUMMARY                                │
+│ Berlin, Germany                        │ Concise 45-80 word positioning paragraph.           │
+│ +49 000 000 000                        │ States level, function, strengths, and value.       │
+│ name@email.com                         │ No first person. No fluff.                          │
+│ linkedin.com/in/name                   │                                                      │
+│ website.com                            │ PROFESSIONAL EXPERIENCE                             │
+│                                        │ ROLE TITLE                        MMM YYYY - Present │
+│ CORE SKILLS                            │ Company Name, Location                               │
+│ Business Development                   │ • Action + scope + measurable result                 │
+│ Commercial Strategy                    │ • Action + scope + measurable result                 │
+│ Stakeholder Management                 │ • Action + scope + measurable result                 │
+│ Negotiation                            │ • Action + scope + measurable result                 │
+│ CRM / Pipeline Management              │                                                      │
+│ Market Analysis                        │ ROLE TITLE                      MMM YYYY - MMM YYYY  │
+│                                        │ Company Name, Location                               │
+│ LANGUAGES                              │ • Action + scope + measurable result                 │
+│ English - Native                       │ • Action + scope + measurable result                 │
+│ German - Professional                  │ • Action + scope + measurable result                 │
+│ Swedish - Conversational               │                                                      │
+│                                        │ EDUCATION                                            │
+│ CERTIFICATIONS                         │ Degree / Qualification             YYYY - YYYY       │
+│ Certification - Issuer - Year          │ Institution, Location                                │
+│ Certification - Issuer - Year          │                                                      │
+│                                        │ ADDITIONAL INFORMATION                               │
+│ TOOLS                                  │ Award / Membership / Selected Project                │
+│ Salesforce                             │                                                      │
+│ HubSpot                                │                                                      │
+│ Excel                                  │                                                      │
+│ Power BI                               │                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+## Construction Spec
+
+### 1. Header Block
+
+```text
+FULL NAME
+Professional Title / Positioning Line
+City, Country · Phone · Email · LinkedIn · Website
+```
+
+Rules:
+
+* Name is the largest element on the page.
+* Title sits directly below the name.
+* Contact line reads as compact metadata rather than body copy.
+* Keep the header full-width rather than forcing it into the right column.
+
+### 2. Left Column
+
+Preferred section order:
+
+```text
+CONTACT
+CORE SKILLS
+LANGUAGES
+CERTIFICATIONS
+TOOLS
+```
+
+Rules:
+
+* Keep entries concise and vertically compact.
+* Use text lists, not visual widgets.
+* Avoid large gaps between small sections.
+* If the sidebar receives a tint, it must be a barely visible neutral only.
+* The left column must never dominate the right column visually.
+
+Example patterns:
+
+```text
+CONTACT
+Berlin, Germany
++49 000 000 000
+name@email.com
+linkedin.com/in/name
+website.com
+```
+
+```text
+CORE SKILLS
+Business Development
+Commercial Strategy
+Stakeholder Management
+Negotiation
+CRM Management
+Forecasting
+```
+
+```text
+LANGUAGES
+English - Native
+German - Professional
+Swedish - Conversational
+```
+
+### 3. Right Column
+
+Preferred section order:
+
+```text
+PROFESSIONAL SUMMARY
+PROFESSIONAL EXPERIENCE
+EDUCATION
+ADDITIONAL INFORMATION
+```
+
+Rules:
+
+* Summary starts at the top of the right column.
+* Experience is the dominant block in the layout.
+* Education is concise and placed below experience unless early-career content demands otherwise.
+* Additional information remains short and secondary.
+
+### 4. Professional Summary
+
+```text
+PROFESSIONAL SUMMARY
+Short paragraph of 3-5 lines with concise executive positioning.
+```
+
+Rules:
+
+* Keep it one compact paragraph.
+* Do not fragment it into multiple mini-lines.
+* Avoid first-person voice and generic self-description.
+
+### 5. Professional Experience
+
+```text
+ROLE TITLE                                            MMM YYYY - MMM YYYY
+Company Name, Location
+Optional one-line descriptor if context is needed
+• Action + scope/context + measurable result
+• Action + scope/context + measurable result
+• Action + scope/context + measurable result
+• Action + scope/context + measurable result
+```
+
+Rules:
+
+* Role title and date share one line.
+* Date stays flush right across every role.
+* Company line sits below role title.
+* Bullets use a consistent hanging indent.
+* Space between roles is larger than space between bullets.
+
+### 6. Education
+
+```text
+EDUCATION
+Degree / Qualification                               YYYY - YYYY
+Institution, Location
+Optional honors / notable module if relevant
+```
+
+Rules:
+
+* Keep entries concise.
+* Align dates consistently with experience entries.
+* Sort newest first.
+
+### 7. Additional Left-Column Sections
+
+Certifications:
+
+```text
+CERTIFICATIONS
+Certification Name - Issuer - Year
+Certification Name - Issuer - Year
+```
+
+Tools:
+
+```text
+TOOLS
+Salesforce
+HubSpot
+Excel
+Power BI
+Microsoft 365
+```
+
+Rules:
+
+* Use plain text lines only.
+* No icons, bars, dots, stars, or proficiency meters.
+* Keep labels short enough to avoid awkward wrapping in the narrow column.
+
+## Spacing And Alignment
+
+Vertical rhythm:
+
+```text
+[Top margin]
+Header content
+small gap
+Divider rule
+medium gap
+Two-column body starts
+small gap between heading and content
+medium gap between sections
+...
+[Bottom margin]
+```
+
+Suggested spacing:
+
+* 4-8 pt between heading and section content
+* 10-14 pt between small left-column sections
+* 12-16 pt between major right-column sections
+* 10-14 pt between experience entries
+* 2-4 pt between bullets inside a role
+
+Alignment system:
+
+```text
+LEFT EDGE OF HEADER
+LEFT EDGE OF LEFT COLUMN CONTENT
+LEFT EDGE OF RIGHT COLUMN CONTENT
+RIGHT EDGE OF DATE COLUMN
+RIGHT EDGE OF PAGE CONTENT FIELD
+```
+
+Rules:
+
+* Respect the 6 mm to 8 mm gutter consistently.
+* Do not let left-column sections drift horizontally.
+* Do not create separate floating alignment systems inside the same column.
+* Dates in the right column must align consistently.
+
+## Page-Break Logic
+
+If the CV flows to page 2:
+
+* Repeat a small name + contact header only if needed.
+* Continue the same two-column grid only if both columns still carry meaningful content.
+* If the remaining content is mostly experience, it is acceptable for page 2 to collapse to a cleaner single-column continuation.
+
+Continuation concept:
+
+```text
+PAGE 2 START
+┌──────────────────────────────────────────────────────────────────────────────────────────────┐
+│ FULL NAME  ·  Email  ·  Phone                                                                │
+│ ──────────────────────────────────────────────────────────────────────────────────────────── │
+│                                                                                              │
+│ PROFESSIONAL EXPERIENCE (continued if necessary)                                             │
+│ ROLE TITLE                                            MMM YYYY - MMM YYYY                    │
+│ Company Name, Location                                                                        │
+│ • Bullet                                                                                     │
+│ • Bullet                                                                                     │
+│                                                                                              │
+│ EDUCATION                                                                                    │
+│ ...                                                                                          │
+└──────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+Rules:
+
+* Do not split a heading from its content at a page break.
+* Do not leave a single orphan bullet on page 2 if it can be avoided.
+* Do not force an empty-looking left column on page 2 if the content no longer supports it.
+
+## Micro-Detail Checklist
+
+* Left column width stays between 28% and 32%.
+* Right column width stays between 68% and 72%.
+* Gutter stays between 6 mm and 8 mm.
+* Left column remains narrow and supportive.
+* Right column clearly dominates the reading flow.
+* No dark sidebar block appears anywhere.
+* Sidebar background remains white or barely tinted neutral only if necessary.
+* No photo appears in the layout.
+* No colored cards, rating bars, decorative shapes, or boxed widgets appear in the sidebar.
+* Header remains clean, full-width, and left aligned.
+* Summary reads as one compact paragraph.
+* Experience remains the primary block.
+* Dates align consistently.
+* The layout feels formal, premium, and restrained rather than trendy.
