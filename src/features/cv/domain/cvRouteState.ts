@@ -1,4 +1,9 @@
 import {
+  defaultCvLocale,
+  resolveCvLocale,
+  type CvLocale,
+} from "@/features/cv/domain/cvLocale";
+import {
   resolveCvPaperVariant,
   type CvPaperVariant,
 } from "@/features/cv/domain/paperVariant";
@@ -20,23 +25,27 @@ type SearchParamRecord = Readonly<
 type SearchParamSource = URLSearchParams | SearchParamRecord;
 
 export type CvShowcaseRouteState = {
+  readonly locale: CvLocale;
   readonly paper: CvPaperVariant;
   readonly template: CvTemplateVariant;
   readonly version: CvVersion;
 };
 
 export type CvPrintRouteState = {
+  readonly locale: CvLocale;
   readonly template: CvTemplateVariant;
   readonly version: CvVersion;
 };
 
 export const defaultCvShowcaseRouteState: CvShowcaseRouteState = {
+  locale: defaultCvLocale,
   paper: "a4",
   template: cvVersionMetadata[defaultCvVersion].defaultTemplate,
   version: defaultCvVersion,
 };
 
 export const defaultCvPrintRouteState: CvPrintRouteState = {
+  locale: defaultCvLocale,
   template: cvVersionMetadata[defaultCvVersion].defaultTemplate,
   version: defaultCvVersion,
 };
@@ -47,6 +56,7 @@ export function resolveCvShowcaseRouteState(
   const version = resolveCvVersion(getSingleSearchParamValue(source, "version"));
 
   return {
+    locale: resolveCvLocale(getSingleSearchParamValue(source, "lang")),
     paper: resolveCvPaperVariant(getSingleSearchParamValue(source, "paper")),
     template: resolveCvTemplateVariant(
       getSingleSearchParamValue(source, "template"),
@@ -62,6 +72,7 @@ export function resolveCvPrintRouteState(
   const version = resolveCvVersion(getSingleSearchParamValue(source, "version"));
 
   return {
+    locale: resolveCvLocale(getSingleSearchParamValue(source, "lang")),
     template: resolveCvTemplateVariant(
       getSingleSearchParamValue(source, "template"),
       cvVersionMetadata[version].defaultTemplate,

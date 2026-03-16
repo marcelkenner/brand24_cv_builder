@@ -32,4 +32,18 @@ describe("cvVersions", () => {
       "Delivery and support",
     );
   });
+
+  it("provides natural Polish CV content for the localized variant set", () => {
+    const polishDocument = getCvDocument("operations-transformation", "pl");
+    const polishLeadershipDocument = getCvDocument("leadership-stakeholder", "pl");
+
+    expect(polishDocument.header.location).toBe("Poznań, woj. wielkopolskie, Polska");
+    expect(polishDocument.summary.sentences[0]).toContain(
+      "Analityk biznesowo-systemowy z ponad 5-letnim doświadczeniem",
+    );
+    expect(polishDocument.technicalSkills[1].label).toBe("Delivery i wsparcie");
+    expect(polishLeadershipDocument.summary.sentences[1]).toContain(
+      "biznesu, architektów, developerów, UX i QA",
+    );
+  });
 });

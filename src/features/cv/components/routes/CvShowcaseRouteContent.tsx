@@ -17,7 +17,8 @@ export function ResolvedCvShowcaseRoute({
 }) {
   return (
     <CvShowcasePage
-      document={getCvDocument(state.version)}
+      document={getCvDocument(state.version, state.locale)}
+      locale={state.locale}
       paper={state.paper}
       template={state.template}
       version={state.version}

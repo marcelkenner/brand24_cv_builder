@@ -5,20 +5,24 @@ import type {
   CvDocument,
   CvSectionKey,
 } from "@/features/cv/domain/cvDocument";
-import { cvSectionLabels } from "@/features/cv/domain/cvDocument";
+import type { CvLocale } from "@/features/cv/domain/cvLocale";
+import { getCvSectionLabels } from "@/features/cv/data/cvSectionLabels";
 
 import styles from "./CvDocument.module.css";
 
-export function buildDocumentSections(document: CvDocument) {
+export function buildDocumentSections(document: CvDocument, locale: CvLocale) {
+  const sectionLabels = getCvSectionLabels(locale);
+
   return {
     certifications: document.certifications ? (
-      <DocumentSection sectionKey="certifications">
+      <DocumentSection sectionKey="certifications" sectionLabels={sectionLabels}>
         <ul className={styles.tightList}>
           {document.certifications.map((certification, certificationIndex) => (
             <li
               key={`${certification.title}-${certification.year}`}
               className={styles.printUnit}
               {...getUnitDataProps(
+                sectionLabels,
                 "certifications",
                 buildUnitId("certifications", certificationIndex),
               )}
@@ -32,13 +36,14 @@ export function buildDocumentSections(document: CvDocument) {
       </DocumentSection>
     ) : null,
     competencies: (
-      <DocumentSection sectionKey="competencies">
+      <DocumentSection sectionKey="competencies" sectionLabels={sectionLabels}>
         <ul className={styles.keywordList}>
           {document.competencies.map((competency, competencyIndex) => (
             <li
               key={competency}
               className={styles.printUnit}
               {...getUnitDataProps(
+                sectionLabels,
                 "competencies",
                 buildUnitId("competencies", competencyIndex),
               )}
@@ -50,13 +55,17 @@ export function buildDocumentSections(document: CvDocument) {
       </DocumentSection>
     ),
     education: document.education && document.education.length > 0 ? (
-      <DocumentSection sectionKey="education">
+      <DocumentSection sectionKey="education" sectionLabels={sectionLabels}>
         <div className={styles.entryList}>
           {document.education.map((entry, entryIndex) => (
             <article
               key={`${entry.institution}-${entry.degree}-${entry.endYear}`}
               className={`${styles.entry} ${styles.printUnit}`}
-              {...getUnitDataProps("education", buildUnitId("education", entryIndex))}
+              {...getUnitDataProps(
+                sectionLabels,
+                "education",
+                buildUnitId("education", entryIndex),
+              )}
             >
               <div className={styles.entryHeadingRow}>
                 <h3 className={styles.entryTitle}>{entry.degree}</h3>
@@ -75,13 +84,17 @@ export function buildDocumentSections(document: CvDocument) {
       </DocumentSection>
     ) : null,
     experience: (
-      <DocumentSection sectionKey="experience">
+      <DocumentSection sectionKey="experience" sectionLabels={sectionLabels}>
         <div className={styles.entryList}>
           {document.experience.map((entry, entryIndex) => (
             <article
               key={`${entry.company}-${entry.title}-${entry.dates.start}`}
               className={`${styles.entry} ${styles.printUnit}`}
-              {...getUnitDataProps("experience", buildUnitId("experience", entryIndex))}
+              {...getUnitDataProps(
+                sectionLabels,
+                "experience",
+                buildUnitId("experience", entryIndex),
+              )}
             >
               <div className={styles.entryHeadingRow}>
                 <h3 className={styles.entryTitle}>{entry.title}</h3>
@@ -106,13 +119,14 @@ export function buildDocumentSections(document: CvDocument) {
       </DocumentSection>
     ),
     languages: (
-      <DocumentSection sectionKey="languages">
+      <DocumentSection sectionKey="languages" sectionLabels={sectionLabels}>
         <ul className={styles.keywordList}>
           {document.languages.map((entry, languageIndex) => (
             <li
               key={entry.language}
               className={styles.printUnit}
               {...getUnitDataProps(
+                sectionLabels,
                 "languages",
                 buildUnitId("languages", languageIndex),
               )}
@@ -124,23 +138,31 @@ export function buildDocumentSections(document: CvDocument) {
       </DocumentSection>
     ),
     summary: (
-      <DocumentSection sectionKey="summary">
+      <DocumentSection sectionKey="summary" sectionLabels={sectionLabels}>
         <div
           className={styles.printUnit}
-          {...getUnitDataProps("summary", buildUnitId("summary", 0))}
+          {...getUnitDataProps(
+            sectionLabels,
+            "summary",
+            buildUnitId("summary", 0),
+          )}
         >
           <p className={styles.summary}>{document.summary.sentences.join(" ")}</p>
         </div>
       </DocumentSection>
     ),
     technicalSkills: (
-      <DocumentSection sectionKey="technicalSkills">
+      <DocumentSection
+        sectionKey="technicalSkills"
+        sectionLabels={sectionLabels}
+      >
         <ul className={styles.skillGroupList}>
           {document.technicalSkills.map((group, skillIndex) => (
             <li
               key={group.label}
               className={`${styles.skillRow} ${styles.printUnit}`}
               {...getUnitDataProps(
+                sectionLabels,
                 "technicalSkills",
                 buildUnitId("technicalSkills", skillIndex),
               )}
@@ -159,10 +181,14 @@ function buildUnitId(sectionKey: CvSectionKey, index: number, suffix?: string) {
   return suffix ? `${sectionKey}-${index}-${suffix}` : `${sectionKey}-${index}`;
 }
 
-function getUnitDataProps(sectionKey: CvSectionKey, unitId: string) {
+function getUnitDataProps(
+  sectionLabels: Readonly<Record<CvSectionKey, string>>,
+  sectionKey: CvSectionKey,
+  unitId: string,
+) {
   return {
     "data-cv-continuation-heading": "false",
-    "data-cv-section-label": cvSectionLabels[sectionKey],
+    "data-cv-section-label": sectionLabels[sectionKey],
     "data-cv-unit": unitId,
     "data-page-break-before": "false",
   } as const;
@@ -179,9 +205,11 @@ export function formatContactValue(contact: CvContactMethod) {
 function DocumentSection({
   children,
   sectionKey,
+  sectionLabels,
 }: {
   readonly children: ReactNode;
   readonly sectionKey: CvSectionKey;
+  readonly sectionLabels: Readonly<Record<CvSectionKey, string>>;
 }) {
   const headingId = `cv-section-${sectionKey}`;
 
@@ -197,7 +225,7 @@ function DocumentSection({
         data-cv-section-heading="true"
         id={headingId}
       >
-        {cvSectionLabels[sectionKey]}
+        {sectionLabels[sectionKey]}
       </h2>
       {children}
     </section>

@@ -1,6 +1,6 @@
 import { projectOverview } from "@/features/cv/data/projectOverview";
+import { getCvSectionLabels } from "@/features/cv/data/cvSectionLabels";
 import { sampleCvDocument } from "@/features/cv/data/sampleCvDocument";
-import { cvSectionLabels } from "@/features/cv/domain/cvDocument";
 import { cvInstallCommands } from "@/features/cv/server/installCommands";
 
 import { CvSectionHeading } from "./CvSectionHeading";
@@ -40,6 +40,7 @@ function FeatureScaffoldSection() {
 
 function SampleProfileSection() {
   const summary = sampleCvDocument.summary.sentences.join(" ");
+  const sectionLabels = getCvSectionLabels("en");
 
   return (
     <article className="rounded-[28px] border border-rule bg-surface p-6 sm:p-8">
@@ -69,7 +70,7 @@ function SampleProfileSection() {
       <ul className="mt-6 grid gap-2 text-sm leading-6 text-text">
         {sampleCvDocument.sectionOrder.map((section) => (
           <li key={section} className="rounded-xl border border-rule px-3 py-2">
-            {cvSectionLabels[section]}
+            {sectionLabels[section]}
           </li>
         ))}
       </ul>

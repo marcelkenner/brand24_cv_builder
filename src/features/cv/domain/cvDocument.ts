@@ -19,7 +19,19 @@ type CvMonthName =
   | "Sep"
   | "Oct"
   | "Nov"
-  | "Dec";
+  | "Dec"
+  | "sty"
+  | "lut"
+  | "mar"
+  | "kwi"
+  | "maj"
+  | "cze"
+  | "lip"
+  | "sie"
+  | "wrz"
+  | "paź"
+  | "lis"
+  | "gru";
 
 export type CvMonthYear = `${CvMonthName} ${number}`;
 
@@ -49,31 +61,31 @@ export type CvContactMethod =
   | {
       readonly href: `mailto:${EmailAddress}`;
       readonly kind: "email";
-      readonly label: "Email";
+      readonly label: string;
       readonly value: EmailAddress;
     }
   | {
       readonly href: `tel:${string}`;
       readonly kind: "phone";
-      readonly label: "Phone";
+      readonly label: string;
       readonly value: InternationalPhoneNumber;
     }
   | {
       readonly href: HttpsUrl;
       readonly kind: "linkedin";
-      readonly label: "LinkedIn";
+      readonly label: string;
       readonly value: HttpsUrl;
     }
   | {
       readonly href: HttpsUrl;
       readonly kind: "website";
-      readonly label: "Website";
+      readonly label: string;
       readonly value: HttpsUrl;
     };
 
 export type CvRoleDateRange =
   | {
-      readonly end: "Present";
+      readonly end: "Present" | "Obecnie";
       readonly kind: "current";
       readonly start: CvMonthYear;
     }
@@ -87,7 +99,11 @@ export type CvLanguageProficiency =
   | "Native"
   | "Fluent"
   | "Professional Working Proficiency"
-  | "Conversational";
+  | "Conversational"
+  | "Ojczysty"
+  | "Biegły"
+  | "Profesjonalna znajomość robocza"
+  | "Komunikatywny";
 
 export type CvSkillGroup = {
   readonly items: NonEmptyReadonlyArray<string>;
@@ -147,14 +163,4 @@ export type CvCertification = {
 export type CvLanguageEntry = {
   readonly language: string;
   readonly proficiency: CvLanguageProficiency;
-};
-
-export const cvSectionLabels: Readonly<Record<CvSectionKey, string>> = {
-  certifications: "Certifications",
-  competencies: "Core competencies",
-  education: "Education",
-  experience: "Professional experience",
-  languages: "Languages",
-  summary: "Professional summary",
-  technicalSkills: "Technical skills",
 };

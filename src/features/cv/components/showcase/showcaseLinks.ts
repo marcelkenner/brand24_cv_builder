@@ -1,5 +1,9 @@
-import { cvPaperMetadata, type CvPaperVariant } from "@/features/cv/domain/paperVariant";
+import {
+  defaultCvLocale,
+  type CvLocale,
+} from "@/features/cv/domain/cvLocale";
 import { getCvPdfAssetPath } from "@/features/cv/domain/cvPdfAsset";
+import type { CvPaperVariant } from "@/features/cv/domain/paperVariant";
 import type { CvTemplateVariant } from "@/features/cv/domain/cvTemplateVariant";
 import {
   cvVersionMetadata,
@@ -7,12 +11,8 @@ import {
   type CvVersion,
 } from "@/features/cv/domain/cvVersion";
 
-export const cvPaperMetadataEntries = Object.entries(cvPaperMetadata) as readonly [
-  CvPaperVariant,
-  (typeof cvPaperMetadata)[CvPaperVariant],
-][];
-
 export function getShowcaseHref(
+  locale: CvLocale,
   paper: CvPaperVariant,
   version: CvVersion,
   template: CvTemplateVariant,
@@ -22,6 +22,10 @@ export function getShowcaseHref(
 
   if (paper !== "a4") {
     params.set("paper", paper);
+  }
+
+  if (locale !== defaultCvLocale) {
+    params.set("lang", locale);
   }
 
   if (version !== defaultCvVersion) {
@@ -39,6 +43,7 @@ export function getShowcaseHref(
 }
 
 export function getPrintHref(
+  locale: CvLocale,
   paper: CvPaperVariant,
   version: CvVersion,
   template: CvTemplateVariant,
@@ -47,6 +52,10 @@ export function getPrintHref(
 
   if (version !== defaultCvVersion) {
     params.set("version", version);
+  }
+
+  if (locale !== defaultCvLocale) {
+    params.set("lang", locale);
   }
 
   if (template !== cvVersionMetadata[version].defaultTemplate) {
@@ -59,11 +68,13 @@ export function getPrintHref(
 }
 
 export function getDownloadHref(
+  locale: CvLocale,
   paper: CvPaperVariant,
   version: CvVersion,
   template: CvTemplateVariant,
 ) {
   return getCvPdfAssetPath({
+    locale,
     paper,
     template,
     version,

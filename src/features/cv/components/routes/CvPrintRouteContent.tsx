@@ -23,7 +23,8 @@ export function ResolvedCvPrintRoute({
 }) {
   return (
     <CvPrintDocument
-      document={getCvDocument(state.version)}
+      document={getCvDocument(state.version, state.locale)}
+      locale={state.locale}
       paper={paper}
       template={state.template}
     />

@@ -1,11 +1,14 @@
 import { render, screen } from "@testing-library/react";
 
 import { CvDocument } from "@/features/cv/components/CvDocument";
+import { getCvSectionLabels } from "@/features/cv/data/cvSectionLabels";
+import { getCvDocument } from "@/features/cv/data/cvVersions";
 import { sampleCvDocument } from "@/features/cv/data/sampleCvDocument";
-import { cvSectionLabels } from "@/features/cv/domain/cvDocument";
 
 describe("CvDocument", () => {
   it("renders the sample CV sections in the declared order for the single-column photo template", () => {
+    const sectionLabels = getCvSectionLabels("en");
+
     render(
       <CvDocument
         document={sampleCvDocument}
@@ -28,7 +31,7 @@ describe("CvDocument", () => {
       screen
         .getAllByRole("heading", { level: 2 })
         .map((heading) => heading.textContent),
-    ).toEqual(sampleCvDocument.sectionOrder.map((section) => cvSectionLabels[section]));
+    ).toEqual(sampleCvDocument.sectionOrder.map((section) => sectionLabels[section]));
   });
 
   it("keeps the paper and template variants visible in the rendered document", () => {
@@ -84,5 +87,30 @@ describe("CvDocument", () => {
     ).not.toBeNull();
     expect(mainColumn?.querySelector('[data-cv-section="summary"]')).not.toBeNull();
     expect(mainColumn?.querySelector('[data-cv-section="experience"]')).not.toBeNull();
+  });
+
+  it("renders localized section labels and content for the Polish document variant", () => {
+    const document = getCvDocument("ai-adoption-manager", "pl");
+
+    render(
+      <CvDocument
+        document={document}
+        locale="pl"
+        paper="a4"
+        template="single-column-with-photo"
+      />,
+    );
+
+    expect(
+      screen.getByRole("article", {
+        name: `CV ${document.header.fullName}`,
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Podsumowanie zawodowe" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Analityk biznesowo-systemowy z ponad 5-letnim doświadczeniem/i),
+    ).toBeInTheDocument();
   });
 });

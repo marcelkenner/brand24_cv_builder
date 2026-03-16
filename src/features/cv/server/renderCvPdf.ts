@@ -1,5 +1,9 @@
 import { chromium } from "playwright";
 
+import {
+  defaultCvLocale,
+  type CvLocale,
+} from "@/features/cv/domain/cvLocale";
 import type { CvPaperVariant } from "@/features/cv/domain/paperVariant";
 import type { CvTemplateVariant } from "@/features/cv/domain/cvTemplateVariant";
 import {
@@ -14,6 +18,7 @@ import { cvPrintReadySelector } from "./printReady";
 const defaultTimeoutMs = 30_000;
 
 type RenderCvPdfOptions = {
+  readonly locale?: CvLocale;
   readonly origin: string | URL;
   readonly paper: CvPaperVariant;
   readonly template?: CvTemplateVariant;
@@ -22,6 +27,7 @@ type RenderCvPdfOptions = {
 };
 
 export async function renderCvPdf({
+  locale = defaultCvLocale,
   origin,
   paper,
   template,
@@ -38,6 +44,10 @@ export async function renderCvPdf({
 
     if (version !== defaultCvVersion) {
       printUrl.searchParams.set("version", version);
+    }
+
+    if (locale !== defaultCvLocale) {
+      printUrl.searchParams.set("lang", locale);
     }
 
     if (resolvedTemplate !== cvVersionMetadata[version].defaultTemplate) {

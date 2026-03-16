@@ -5,11 +5,15 @@ import {
   parseCvVersion,
   resolveCvVersion,
 } from "@/features/cv/domain/cvVersion";
+import { getCvVersionContent } from "@/features/cv/data/cvVersionContent";
 
 describe("cvVersion", () => {
-  it("keeps the supported version metadata aligned with recruiter-facing labels", () => {
-    expect(cvVersionMetadata["ats-friendly-general"].recruiterTitle).toBe(
+  it("keeps the supported version metadata aligned with template defaults", () => {
+    expect(getCvVersionContent("en", "ats-friendly-general").recruiterTitle).toBe(
       "ATS-Friendly General",
+    );
+    expect(getCvVersionContent("pl", "ats-friendly-general").recruiterTitle).toBe(
+      "Wersja ogólna pod ATS",
     );
     expect(cvVersionMetadata["operations-transformation"].defaultTemplate).toBe(
       "two-column-with-photo",

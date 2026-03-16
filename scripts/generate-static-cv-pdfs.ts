@@ -27,6 +27,7 @@ async function main() {
 
     for (const target of getStaticCvPdfTargets()) {
       const pdf = await renderCvPdf({
+        locale: target.locale,
         origin: `http://127.0.0.1:${staticServerPort}`,
         paper: target.paper,
         template: target.template,

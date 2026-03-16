@@ -1,6 +1,8 @@
 import { vi } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 
+let mockedSearchParams = "version=operations-transformation";
+
 vi.mock("next/navigation", async () => {
   const actual = await vi.importActual<typeof import("next/navigation")>(
     "next/navigation",
@@ -8,7 +10,7 @@ vi.mock("next/navigation", async () => {
 
   return {
     ...actual,
-    useSearchParams: () => new URLSearchParams("version=operations-transformation"),
+    useSearchParams: () => new URLSearchParams(mockedSearchParams),
   };
 });
 
@@ -16,6 +18,10 @@ import CvPrintPage, { generateStaticParams } from "@/app/cv/[paper]/page";
 import { getCvDocument } from "@/features/cv/data/cvVersions";
 
 describe("CvPrintPage", () => {
+  afterEach(() => {
+    mockedSearchParams = "version=operations-transformation";
+  });
+
   it("declares static params for each supported paper route", () => {
     expect(generateStaticParams()).toEqual([
       { paper: "a4" },
@@ -55,5 +61,25 @@ describe("CvPrintPage", () => {
     await waitFor(() => {
       expect(screen.getByRole("main")).toHaveAttribute("data-cv-print-ready", "true");
     });
+  });
+
+  it("renders the Polish print document when lang=pl is present", async () => {
+    mockedSearchParams = "lang=pl&version=operations-transformation";
+    const document = getCvDocument("operations-transformation", "pl");
+
+    render(
+      await CvPrintPage({
+        params: Promise.resolve({ paper: "letter" }),
+      }),
+    );
+
+    expect(
+      screen.getByRole("article", {
+        name: `CV ${document.header.fullName}`,
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Analityk biznesowo-systemowy z ponad 5-letnim doświadczeniem/i),
+    ).toBeInTheDocument();
   });
 });

@@ -6,6 +6,10 @@ import type {
   CvPhoto,
   CvSectionKey,
 } from "@/features/cv/domain/cvDocument";
+import {
+  defaultCvLocale,
+  type CvLocale,
+} from "@/features/cv/domain/cvLocale";
 import type { CvPaperVariant } from "@/features/cv/domain/paperVariant";
 import {
   cvTemplateMetadata,
@@ -18,6 +22,7 @@ import { getDocumentStyle } from "./cvDocumentStyle";
 
 type CvDocumentProps = {
   readonly document: CvDocumentModel;
+  readonly locale?: CvLocale;
   readonly paper: CvPaperVariant;
   readonly template: CvTemplateVariant;
 };
@@ -29,14 +34,21 @@ const twoColumnSidebarSectionKeys = new Set<CvSectionKey>([
   "technicalSkills",
 ]);
 
-export function CvDocument({ document, paper, template }: CvDocumentProps) {
-  const sections = buildDocumentSections(document);
+export function CvDocument({
+  document,
+  locale = defaultCvLocale,
+  paper,
+  template,
+}: CvDocumentProps) {
+  const sections = buildDocumentSections(document, locale);
   const templateMetadata = cvTemplateMetadata[template];
   const photo = getTemplatePhoto(document.header.photo, template);
 
   return (
     <article
-      aria-label={`${document.header.fullName} CV`}
+      aria-label={
+        locale === "pl" ? `CV ${document.header.fullName}` : `${document.header.fullName} CV`
+      }
       className={styles.document}
       data-cv-document="true"
       data-paper={paper}

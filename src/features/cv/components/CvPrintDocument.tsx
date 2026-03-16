@@ -3,6 +3,10 @@
 import { useEffect, useRef } from "react";
 
 import type { CvDocument as CvDocumentModel } from "@/features/cv/domain/cvDocument";
+import {
+  defaultCvLocale,
+  type CvLocale,
+} from "@/features/cv/domain/cvLocale";
 import type { CvPaperVariant } from "@/features/cv/domain/paperVariant";
 import { cvTemplateMetadata, type CvTemplateVariant } from "@/features/cv/domain/cvTemplateVariant";
 import { cvPrintReadyAttribute } from "@/features/cv/server/printReady";
@@ -17,12 +21,14 @@ import {
 
 type CvPrintDocumentProps = {
   readonly document: CvDocumentModel;
+  readonly locale?: CvLocale;
   readonly paper: CvPaperVariant;
   readonly template: CvTemplateVariant;
 };
 
 export function CvPrintDocument({
   document,
+  locale = defaultCvLocale,
   paper,
   template,
 }: CvPrintDocumentProps) {
@@ -107,7 +113,7 @@ export function CvPrintDocument({
     return () => {
       isActive = false;
     };
-  }, [document.id, paper, template]);
+  }, [document.id, locale, paper, template]);
 
   return (
     <main
@@ -116,7 +122,12 @@ export function CvPrintDocument({
       {...{ [cvPrintReadyAttribute]: "false" }}
     >
       <div ref={containerRef} className="mx-auto flex w-full justify-center print:block">
-        <CvDocument document={document} paper={paper} template={template} />
+        <CvDocument
+          document={document}
+          locale={locale}
+          paper={paper}
+          template={template}
+        />
       </div>
     </main>
   );

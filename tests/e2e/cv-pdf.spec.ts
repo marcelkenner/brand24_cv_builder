@@ -13,6 +13,12 @@ const pdfVariants = [
   {
     path: "/generated/cv-pdf/cv-letter-operations-transformation-two-column-with-photo.pdf",
   },
+  {
+    path: "/generated/cv-pdf/cv-a4-ai-adoption-manager-single-column-with-photo-pl.pdf",
+  },
+  {
+    path: "/generated/cv-pdf/cv-letter-operations-transformation-two-column-with-photo-pl.pdf",
+  },
 ] as const;
 
 test.describe("static cv pdf assets", () => {

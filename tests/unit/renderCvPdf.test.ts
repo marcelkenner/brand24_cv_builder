@@ -73,6 +73,7 @@ describe("renderCvPdf", () => {
   it.each([
     [
       "a4",
+      "en",
       "ai-adoption-manager",
       "single-column-with-photo",
       "A4",
@@ -80,6 +81,15 @@ describe("renderCvPdf", () => {
     ],
     [
       "letter",
+      "pl",
+      "operations-transformation",
+      "two-column-with-photo",
+      "Letter",
+      "https://cv.example/cv/letter?version=operations-transformation&lang=pl",
+    ],
+    [
+      "letter",
+      "en",
       "operations-transformation",
       "two-column-with-photo",
       "Letter",
@@ -87,6 +97,7 @@ describe("renderCvPdf", () => {
     ],
     [
       "letter",
+      "en",
       "operations-transformation",
       "single-column-with-photo",
       "Letter",
@@ -94,12 +105,13 @@ describe("renderCvPdf", () => {
     ],
   ] as const)(
     "returns non-empty PDF bytes for %s",
-    async (paper, version, template, format, expectedUrl) => {
+    async (paper, locale, version, template, format, expectedUrl) => {
       const pdfBytes = Buffer.from("%PDF phase 7");
       const { browser, context, page } = createRenderHarness(pdfBytes);
 
       await expect(
         renderCvPdf({
+          locale,
           origin: "https://cv.example/showcase?paper=letter",
           paper,
           template,

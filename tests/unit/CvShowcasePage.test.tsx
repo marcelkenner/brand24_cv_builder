@@ -10,6 +10,7 @@ describe("CvShowcasePage", () => {
     render(
       <CvShowcasePage
         document={document}
+        locale="en"
         paper="letter"
         template="two-column-with-photo"
         version="leadership-stakeholder"
@@ -54,6 +55,18 @@ describe("CvShowcasePage", () => {
       screen.getByRole("link", { name: "What we fixed" }),
     ).toHaveAttribute("href", "#what-we-fixed");
     expect(
+      screen.getByRole("navigation", { name: "Language" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "English" }),
+    ).toHaveAttribute("aria-current", "page");
+    expect(
+      screen.getByRole("link", { name: "Polski" }),
+    ).toHaveAttribute(
+      "href",
+      "/?paper=letter&lang=pl&version=leadership-stakeholder",
+    );
+    expect(
       screen.getByRole("heading", { name: /Choose the recruiter view/i }),
     ).toBeInTheDocument();
     expect(
@@ -94,6 +107,7 @@ describe("CvShowcasePage", () => {
     render(
       <CvShowcasePage
         document={document}
+        locale="en"
         paper="a4"
         template="two-column-with-photo"
         version="operations-transformation"
@@ -159,5 +173,57 @@ describe("CvShowcasePage", () => {
     expect(
       screen.getAllByText(/^Result$/i)[0].closest("p")?.querySelector("svg"),
     ).not.toBeNull();
+  });
+
+  it("renders Polish website copy and keeps locale in workspace links", () => {
+    const document = getCvDocument("leadership-stakeholder", "pl");
+
+    render(
+      <CvShowcasePage
+        document={document}
+        locale="pl"
+        paper="letter"
+        template="two-column-with-photo"
+        version="leadership-stakeholder"
+      />,
+    );
+
+    expect(
+      screen.getByRole("heading", {
+        name: /CV gotowe dla rekrutera, pokazane od początku do końca/i,
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Pobierz PDF" }),
+    ).toHaveAttribute(
+      "href",
+      "/generated/cv-pdf/cv-letter-leadership-stakeholder-two-column-with-photo-pl.pdf",
+    );
+    expect(
+      screen.getByRole("link", { name: "Zobacz online" }),
+    ).toHaveAttribute(
+      "href",
+      "/cv/letter?version=leadership-stakeholder&lang=pl",
+    );
+    expect(
+      screen.getByRole("navigation", { name: "Język" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Polski" }),
+    ).toHaveAttribute("aria-current", "page");
+    expect(
+      screen.getByRole("link", { name: "English" }),
+    ).toHaveAttribute(
+      "href",
+      "/?paper=letter&version=leadership-stakeholder",
+    );
+    expect(
+      screen.getByRole("heading", { name: /Wybierz perspektywę dla rekrutera/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/Łączny czas budowy/i)).toBeInTheDocument();
+    expect(screen.getByText(/Poprawka 01/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Polski" }),
+    ).toHaveAttribute("aria-current", "page");
   });
 });
