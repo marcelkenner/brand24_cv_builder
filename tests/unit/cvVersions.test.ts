@@ -46,4 +46,50 @@ describe("cvVersions", () => {
       "biznesu, architektów, developerów, UX i QA",
     );
   });
+
+  it("includes direct email, phone, and LinkedIn contact methods in both locales", () => {
+    const englishDocument = getCvDocument("ai-adoption-manager");
+    const polishDocument = getCvDocument("ai-adoption-manager", "pl");
+
+    expect(englishDocument.header.contactMethods).toEqual([
+      {
+        href: "mailto:marcel.kenner@outlook.com",
+        kind: "email",
+        label: "Email",
+        value: "marcel.kenner@outlook.com",
+      },
+      {
+        href: "tel:+48732450969",
+        kind: "phone",
+        label: "Phone",
+        value: "+48 732 450 969",
+      },
+      {
+        href: "https://www.linkedin.com/in/marcel-kenner/",
+        kind: "linkedin",
+        label: "LinkedIn",
+        value: "https://www.linkedin.com/in/marcel-kenner/",
+      },
+    ]);
+    expect(polishDocument.header.contactMethods).toEqual([
+      {
+        href: "mailto:marcel.kenner@outlook.com",
+        kind: "email",
+        label: "E-mail",
+        value: "marcel.kenner@outlook.com",
+      },
+      {
+        href: "tel:+48732450969",
+        kind: "phone",
+        label: "Telefon",
+        value: "+48 732 450 969",
+      },
+      {
+        href: "https://www.linkedin.com/in/marcel-kenner/",
+        kind: "linkedin",
+        label: "LinkedIn",
+        value: "https://www.linkedin.com/in/marcel-kenner/",
+      },
+    ]);
+  });
 });

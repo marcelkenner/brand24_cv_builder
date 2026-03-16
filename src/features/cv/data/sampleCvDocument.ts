@@ -3,7 +3,26 @@ import type {
   CvDocument,
 } from "@/features/cv/domain/cvDocument";
 
-const sampleContactMethods: readonly CvContactMethod[] = [];
+const sampleContactMethods: readonly CvContactMethod[] = [
+  {
+    href: "mailto:marcel.kenner@outlook.com",
+    kind: "email",
+    label: "Email",
+    value: "marcel.kenner@outlook.com",
+  },
+  {
+    href: "tel:+48732450969",
+    kind: "phone",
+    label: "Phone",
+    value: "+48 732 450 969",
+  },
+  {
+    href: "https://www.linkedin.com/in/marcel-kenner/",
+    kind: "linkedin",
+    label: "LinkedIn",
+    value: "https://www.linkedin.com/in/marcel-kenner/",
+  },
+];
 
 export const sampleCvDocument = {
   competencies: [

@@ -82,6 +82,7 @@ Cloudflare Pages should use Node `22.16.0`, which is pinned in `.node-version`.
 - Homepage utility controls, metadata rows, structured narrative chips, and external reference links now use restrained outline Heroicons to improve scanability without turning the page into an icon-heavy UI.
 - The source brief in `docs/project_description.md` now reflects the workspace-first and narrative-section homepage structure.
 - The checked-in source profile is Marcel Kenner, and the app now derives four recruiter-facing CV versions from that same verified experience base without inventing unsupported facts.
+- The checked-in English and Polish CV headers now include direct email, phone, and LinkedIn contact details for Marcel Kenner.
 - The Marcel source CV now includes the checked-in headshot asset at `public/new_pfp1.jpg`, and every recruiter-facing CV version defaults to a photo-including template.
 - The versioned CV data lives in `src/features/cv/data/cvVersions.ts`, which now resolves English or Polish document content by locale, while `src/features/cv/domain/cvVersion.ts` owns the typed recruiter-facing version slugs and default template mapping.
 - The print-only document route currently renders at `/cv/[paper]` through `src/app/cv/[paper]/page.tsx` and accepts the optional `lang`, `version`, and `template` query parameters.

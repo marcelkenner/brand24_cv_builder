@@ -86,7 +86,26 @@ const polishBaseCvDocument = {
     },
   ],
   header: {
-    contactMethods: [],
+    contactMethods: [
+      {
+        href: "mailto:marcel.kenner@outlook.com",
+        kind: "email",
+        label: "E-mail",
+        value: "marcel.kenner@outlook.com",
+      },
+      {
+        href: "tel:+48732450969",
+        kind: "phone",
+        label: "Telefon",
+        value: "+48 732 450 969",
+      },
+      {
+        href: "https://www.linkedin.com/in/marcel-kenner/",
+        kind: "linkedin",
+        label: "LinkedIn",
+        value: "https://www.linkedin.com/in/marcel-kenner/",
+      },
+    ],
     fullName: "Marcel Kenner",
     location: "Poznań, woj. wielkopolskie, Polska",
     photo: {
