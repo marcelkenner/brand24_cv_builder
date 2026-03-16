@@ -76,7 +76,7 @@ Cloudflare Pages should use Node `22.16.0`, which is pinned in `.node-version`.
 - The current release remains a read-only showcase with four checked-in Marcel CV versions rendered across the four checked-in template variants.
 - The shared document preview currently renders on `/` and `/?lang=pl` through `src/features/cv/components/CvShowcasePage.tsx` and `src/features/cv/components/CvDocument.tsx`.
 - The homepage now combines a concise recruiter/download hero, a split-view preview workspace, origin-story context for how the build started, a roadmap-based implementation timeline, and a short implementation-fixes section in one route.
-- The workspace action row now also exposes a native audio player for `public/Marcel_CV_audio-enhanced-v2.mp3`, so readers can listen to a narrated CV read-through without leaving the page.
+- The workspace action row now also exposes a native audio player for `public/Marcel_CV_audio-enhanced-v2.mp3` on English pages and `public/Marcel_CV_audio_pl-enhanced-v2.mp3` on Polish pages, so readers can listen to a narrated CV read-through without leaving the page.
 - The site favicon now uses the resume-check icon asset at `public/favicon-resume-check.svg`.
 - The app now builds as a static export in `out/`, and the live route state for `lang`, `paper`, `version`, and `template` is resolved client-side so the exported Pages build can still react to URL query parameters.
 - Homepage utility controls, metadata rows, structured narrative chips, and external reference links now use restrained outline Heroicons to improve scanability without turning the page into an icon-heavy UI.

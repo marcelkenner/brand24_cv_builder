@@ -28,7 +28,10 @@ import {
   getShowcaseHref,
 } from "./showcaseLinks";
 
-const CV_NARRATION_AUDIO_SRC = "/Marcel_CV_audio-enhanced-v2.mp3" as const;
+const CV_NARRATION_AUDIO_SRC_BY_LOCALE: Readonly<Record<CvLocale, string>> = {
+  en: "/Marcel_CV_audio-enhanced-v2.mp3",
+  pl: "/Marcel_CV_audio_pl-enhanced-v2.mp3",
+};
 
 type CvShowcaseWorkspaceSectionProps = {
   readonly copy: ShowcasePageCopy;
@@ -118,7 +121,7 @@ export function CvShowcaseWorkspaceSection({
                 </a>
                 <WorkspaceAudioPlayer
                   audioLabel={copy.workspaceAudioLabel}
-                  audioSrc={CV_NARRATION_AUDIO_SRC}
+                  audioSrc={CV_NARRATION_AUDIO_SRC_BY_LOCALE[locale]}
                   body={copy.workspaceAudioBody}
                   title={copy.workspaceAudioTitle}
                 />

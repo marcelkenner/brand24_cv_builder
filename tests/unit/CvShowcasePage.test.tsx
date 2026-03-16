@@ -206,6 +206,9 @@ describe("CvShowcasePage", () => {
       "/cv/letter?version=leadership-stakeholder&lang=pl",
     );
     expect(
+      screen.getByLabelText("Posłuchaj narratora czytającego CV"),
+    ).toHaveAttribute("src", "/Marcel_CV_audio_pl-enhanced-v2.mp3");
+    expect(
       screen.getByRole("navigation", { name: "Język" }),
     ).toBeInTheDocument();
     expect(
